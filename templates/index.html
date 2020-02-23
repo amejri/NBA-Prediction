@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html >
+<head>
+  <meta charset="UTF-8">
+  <title>NBA Talent Predictor</title>
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+
+<style> 
+  ::placeholder { /* Firefox, Chrome, Opera */ 
+      color: white; 
+  } 
+  </style> 
+
+<body style="background-image: url('../static/images/NBA.png');">
+
+ <div class="login"; overflow-y:auto;>
+	<h1>NBA Talents Predictor</h1>
+     <!-- Main Input For Receiving Query to our ML -->
+    <form action="{{ url_for('predict_interface') }}" method="post">
+      <input type="number" step=0.01 name="GP" value="{{ request.form['GP'] }}"  placeholder="GP" required="required" />
+      <input type="number" step=0.01 name="MIN" value="{{ request.form['MIN'] }}" placeholder="MIN" required="required" />
+      <input type="number" step=0.01 name="PTS" value="{{ request.form['PTS'] }}" placeholder="PTS" required="required" />
+      <input type="number" step=0.01 name="FGM" value="{{ request.form['FGM'] }}" placeholder="FGM" required="required" />
+      <input type="number" step=0.01 name="FGA" value="{{ request.form['FGA'] }}" placeholder="FGA" required="required" />
+      <input type="number" step=0.01 name="FG%" value="{{ request.form['FG%'] }}" placeholder="FG%" required="required" />
+      <input type="number" step=0.01 name="3P Made" value="{{ request.form['3P Made'] }}" placeholder="3P Made" required="required" />
+      <input type="number" step=0.01 name="3PA" value="{{ request.form['3PA'] }}" placeholder="3PA" required="required" />
+      <input type="number" step=0.01 name="3P%" value="{{ request.form['3P%'] }}" placeholder="3P%" required="required" />
+      <input type="number" step=0.01 name="FTM" value="{{ request.form['FTM'] }}" placeholder="FTM" required="required" />
+      <input type="number" step=0.01 name="FTA" value="{{ request.form['FTA'] }}" placeholder="FTA" required="required" />
+      <input type="number" step=0.01 name="FT%" value="{{ request.form['FT%'] }}" placeholder="FT%" required="required" />
+      <input type="number" step=0.01 name="OREB" value="{{ request.form['OREB'] }}" placeholder="OREB" required="required" />
+      <input type="number" step=0.01 name="DREB" value="{{ request.form['DREB'] }}" placeholder="DREB" required="required" />
+      <input type="number" step=0.01 name="REB" value="{{ request.form['REB'] }}" placeholder="REB" required="required" />
+      <input type="number" step=0.01 name="AST" value="{{ request.form['AST'] }}" placeholder="AST" required="required" />
+      <input type="number" step=0.01 name="STL" value="{{ request.form['STL'] }}" placeholder="STL" required="required" />
+      <input type="number" step=0.01 name="BLK" value="{{ request.form['BLK'] }}" placeholder="BLK" required="required" />
+      <input type="number" step=0.01 name="TOV" value="{{ request.form['TOV'] }}" placeholder="TOV" required="required" />
+    <button type="submit" class="btn btn-primary btn-block btn-large">Predict Talent</button>
+    </form>
+
+   <br>
+   <br>
+   <h4 style="color:#ffffff">
+    {{result}}
+    </h4>
+ </div>
+</body>
+</html>
